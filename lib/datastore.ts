@@ -1,10 +1,11 @@
 export async function opencloud_ordered_datastore_get(datatstore_name: string) {
-  let v1 = `v1/universes/1180269832/orderedDataStores/${datatstore_name}/scopes/global/entries`;
-  let paramters = `max_page_size=100&order_by=desc`;
-  let url = `https://apis.roblox.com/ordered-data-stores/${v1}?${paramters}`;
+  console.log("datastore fetched");
+  const v1 = `v1/universes/1180269832/orderedDataStores/${datatstore_name}/scopes/global/entries`;
+  const paramters = `max_page_size=100&order_by=desc`;
+  const url = `https://apis.roblox.com/ordered-data-stores/${v1}?${paramters}`;
 
   try {
-    let res = await fetch(url, {
+    const res = await fetch(url, {
       method: "GET",
       headers: {
         "x-api-key": process.env.RBLX_AO_API_KEY!,
