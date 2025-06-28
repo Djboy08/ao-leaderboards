@@ -16,6 +16,7 @@ interface LeaderboardProps {
   description: string;
   entries: LeaderboardEntry[];
   scoreLabel: string;
+  topLabel?: string;
 }
 
 export function Leaderboard({
@@ -23,6 +24,7 @@ export function Leaderboard({
   description,
   entries,
   scoreLabel,
+  topLabel,
 }: LeaderboardProps) {
   const getRankIcon = (rank: number) => {
     switch (rank) {
@@ -59,7 +61,9 @@ export function Leaderboard({
 
       <Card className="max-w-4xl mx-auto">
         <CardHeader>
-          <CardTitle className="text-2xl text-center">Top Players</CardTitle>
+          <CardTitle className="text-2xl text-center">
+            {topLabel ? topLabel : "Top Players"}
+          </CardTitle>
         </CardHeader>
         <CardContent>
           <div className="space-y-4">

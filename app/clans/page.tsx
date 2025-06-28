@@ -3,6 +3,7 @@ import { opencloud_ordered_datastore_get } from "@/lib/datastore";
 
 export default async function ClansPage() {
   let entries = await opencloud_ordered_datastore_get("AOTopClans2");
+  console.log(entries);
   entries = entries.map(
     (
       entry: {
@@ -26,6 +27,7 @@ export default async function ClansPage() {
       description="The top clans"
       entries={entries}
       scoreLabel="Infamy"
+      topLabel="Top Clans"
     />
   );
 }
