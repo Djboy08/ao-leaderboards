@@ -4,7 +4,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import { Navigation } from "@/components/navigation";
 // import { ThemeProvider } from "@/components/theme-provider"
-
+export const revalidate = 900;
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
