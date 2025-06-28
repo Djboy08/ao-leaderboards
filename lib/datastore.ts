@@ -14,7 +14,6 @@ export async function opencloud_ordered_datastore_get(datatstore_name: string) {
 
     if (res.status == 200) {
       const body = await res.json();
-      console.log(body);
       const entries = body.entries;
       return entries;
     }
