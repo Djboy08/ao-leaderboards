@@ -26,6 +26,9 @@ export default async function AssassinSyndicatePage() {
       description="The top users with most Bounty in the Assassin Syndicate"
       entries={entries}
       scoreLabel="Bounty"
+      linkFunction={(id: string) => {
+        return `https://www.roblox.com/users/${id}/profile`;
+      }}
     />
   );
 }

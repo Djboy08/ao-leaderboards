@@ -26,6 +26,9 @@ export default async function FamePage() {
       description="The top users with Renown"
       entries={entries}
       scoreLabel="Renown"
+      linkFunction={(id: string) => {
+        return `https://www.roblox.com/users/${id}/profile`;
+      }}
     />
   );
 }

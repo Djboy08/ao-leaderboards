@@ -26,6 +26,9 @@ export default async function BountyPage() {
       description="The top users with Bounty"
       entries={entries}
       scoreLabel="Bounty"
+      linkFunction={(id: string) => {
+        return `https://www.roblox.com/users/${id}/profile`;
+      }}
     />
   );
 }

@@ -26,6 +26,9 @@ export default async function GrandNavyPage() {
       description="The most distinguished officers serving the Grand Navy"
       entries={entries}
       scoreLabel="Renown"
+      linkFunction={(id: string) => {
+        return `https://www.roblox.com/users/${id}/profile`;
+      }}
     />
   );
 }

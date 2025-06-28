@@ -2,6 +2,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 // import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { Crown, Medal, Award } from "lucide-react";
+import Link from "next/link";
 
 interface LeaderboardEntry {
   rank: number;
@@ -17,6 +18,7 @@ interface LeaderboardProps {
   entries: LeaderboardEntry[];
   scoreLabel: string;
   topLabel?: string;
+  linkFunction?: (id: string) => string;
 }
 
 export function Leaderboard({
@@ -25,6 +27,7 @@ export function Leaderboard({
   entries,
   scoreLabel,
   topLabel,
+  linkFunction,
 }: LeaderboardProps) {
   const getRankIcon = (rank: number) => {
     switch (rank) {
@@ -95,7 +98,18 @@ export function Leaderboard({
                   </Avatar> */}
 
                   <div>
-                    <div className="font-semibold text-lg">{entry.name}</div>
+                    <div className="font-semibold text-lg">
+                      {linkFunction ? (
+                        <Link
+                          href={linkFunction(entry.name)}
+                          className="text-blue-400 underline"
+                        >
+                          {entry.name}
+                        </Link>
+                      ) : (
+                        entry.name
+                      )}
+                    </div>
                     <div className="flex items-center space-x-2 text-sm text-muted-foreground">
                       {entry.file && <span>Save File: {entry.file}</span>}
                       {entry.guild && (
