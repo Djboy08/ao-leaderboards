@@ -1,11 +1,11 @@
-"use client"
+"use client";
 
-import Link from "next/link"
-import { usePathname } from "next/navigation"
-import { cn } from "@/lib/utils"
-import { Trophy, Sword, Shield, Target, Moon, Sun } from "lucide-react"
-import { useTheme } from "next-themes"
-import { Button } from "@/components/ui/button"
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { cn } from "@/lib/utils";
+import { Trophy, Sword, Shield, Target, Moon, Sun } from "lucide-react";
+import { useTheme } from "next-themes";
+import { Button } from "@/components/ui/button";
 
 const navigationItems = [
   {
@@ -28,10 +28,20 @@ const navigationItems = [
     href: "/assassin-syndicate",
     icon: Sword,
   },
-]
+  {
+    name: "Clans",
+    href: "/clans",
+    icon: Sword,
+  },
+  // {
+  //   name: "Guilds",
+  //   href: "/guilds",
+  //   icon: Sword,
+  // },
+];
 
 function ThemeToggle() {
-  const { theme, setTheme } = useTheme()
+  const { theme, setTheme } = useTheme();
 
   return (
     <Button
@@ -44,11 +54,11 @@ function ThemeToggle() {
       <Moon className="absolute h-4 w-4 rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
       <span className="sr-only">Toggle theme</span>
     </Button>
-  )
+  );
 }
 
 export function Navigation() {
-  const pathname = usePathname()
+  const pathname = usePathname();
 
   return (
     <nav className="border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
@@ -62,7 +72,7 @@ export function Navigation() {
           </div>
           <div className="flex items-center space-x-1">
             {navigationItems.map((item) => {
-              const Icon = item.icon
+              const Icon = item.icon;
               return (
                 <Link
                   key={item.href}
@@ -71,18 +81,18 @@ export function Navigation() {
                     "flex items-center space-x-2 px-3 py-2 rounded-md text-sm font-medium transition-colors",
                     pathname === item.href
                       ? "bg-primary text-primary-foreground"
-                      : "text-muted-foreground hover:text-foreground hover:bg-muted",
+                      : "text-muted-foreground hover:text-foreground hover:bg-muted"
                   )}
                 >
                   <Icon className="h-4 w-4" />
                   <span className="hidden sm:inline">{item.name}</span>
                 </Link>
-              )
+              );
             })}
             <ThemeToggle />
           </div>
         </div>
       </div>
     </nav>
-  )
+  );
 }

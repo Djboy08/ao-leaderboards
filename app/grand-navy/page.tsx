@@ -2,7 +2,7 @@ import { Leaderboard } from "@/components/leaderboard";
 import { opencloud_ordered_datastore_get } from "@/lib/datastore";
 
 export default async function GrandNavyPage() {
-  let entries = await opencloud_ordered_datastore_get("AOTopNavy");
+  let entries = await opencloud_ordered_datastore_get("AOTopNavy3");
   entries = entries.map(
     (
       entry: {
@@ -13,10 +13,10 @@ export default async function GrandNavyPage() {
     ) => {
       return {
         rank: index + 1,
-        name: entry.id,
+        name: entry.id.split("_")[0],
         score: parseInt(entry.value),
-        level: 1,
-        guild: "test",
+        file: entry.id.split("_")[1],
+        // guild: "test",
       };
     }
   );
@@ -25,7 +25,7 @@ export default async function GrandNavyPage() {
       title="Grand Navy Leaderboard"
       description="The most distinguished officers serving the Grand Navy"
       entries={entries}
-      scoreLabel="Score"
+      scoreLabel="Renown"
     />
   );
 }

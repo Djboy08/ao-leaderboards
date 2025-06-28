@@ -1,49 +1,54 @@
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Badge } from "@/components/ui/badge"
-import { Avatar, AvatarFallback } from "@/components/ui/avatar"
-import { Crown, Medal, Award } from "lucide-react"
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+// import { Avatar, AvatarFallback } from "@/components/ui/avatar";
+import { Crown, Medal, Award } from "lucide-react";
 
 interface LeaderboardEntry {
-  rank: number
-  name: string
-  score: number
-  level?: number
-  guild?: string
+  rank: number;
+  name: string;
+  score: number;
+  file?: number;
+  guild?: string;
 }
 
 interface LeaderboardProps {
-  title: string
-  description: string
-  entries: LeaderboardEntry[]
-  scoreLabel: string
+  title: string;
+  description: string;
+  entries: LeaderboardEntry[];
+  scoreLabel: string;
 }
 
-export function Leaderboard({ title, description, entries, scoreLabel }: LeaderboardProps) {
+export function Leaderboard({
+  title,
+  description,
+  entries,
+  scoreLabel,
+}: LeaderboardProps) {
   const getRankIcon = (rank: number) => {
     switch (rank) {
       case 1:
-        return <Crown className="h-5 w-5 text-yellow-500" />
+        return <Crown className="h-5 w-5 text-yellow-500" />;
       case 2:
-        return <Medal className="h-5 w-5 text-gray-400" />
+        return <Medal className="h-5 w-5 text-gray-400" />;
       case 3:
-        return <Award className="h-5 w-5 text-amber-600" />
+        return <Award className="h-5 w-5 text-amber-600" />;
       default:
-        return null
+        return null;
     }
-  }
+  };
 
   const getRankBadgeVariant = (rank: number) => {
     switch (rank) {
       case 1:
-        return "default"
+        return "default";
       case 2:
-        return "secondary"
+        return "secondary";
       case 3:
-        return "outline"
+        return "outline";
       default:
-        return "outline"
+        return "outline";
     }
-  }
+  };
 
   return (
     <div className="container mx-auto px-4 py-8 min-h-screen bg-background">
@@ -62,16 +67,20 @@ export function Leaderboard({ title, description, entries, scoreLabel }: Leaderb
               <div
                 key={entry.rank}
                 className={`flex items-center justify-between p-4 rounded-lg border transition-colors ${
-                  entry.rank <= 3 ? "bg-muted/50 border-primary/20" : "hover:bg-muted/30 border-border"
+                  entry.rank <= 3
+                    ? "bg-muted/50 border-primary/20"
+                    : "hover:bg-muted/30 border-border"
                 }`}
               >
                 <div className="flex items-center space-x-4">
                   <div className="flex items-center space-x-2">
                     {getRankIcon(entry.rank)}
-                    <Badge variant={getRankBadgeVariant(entry.rank)}>#{entry.rank}</Badge>
+                    <Badge variant={getRankBadgeVariant(entry.rank)}>
+                      #{entry.rank}
+                    </Badge>
                   </div>
 
-                  <Avatar>
+                  {/* <Avatar>
                     <AvatarFallback className="bg-primary/10 text-primary font-semibold">
                       {entry.name
                         .split(" ")
@@ -79,15 +88,15 @@ export function Leaderboard({ title, description, entries, scoreLabel }: Leaderb
                         .join("")
                         .toUpperCase()}
                     </AvatarFallback>
-                  </Avatar>
+                  </Avatar> */}
 
                   <div>
                     <div className="font-semibold text-lg">{entry.name}</div>
                     <div className="flex items-center space-x-2 text-sm text-muted-foreground">
-                      {entry.level && <span>Level {entry.level}</span>}
+                      {entry.file && <span>Save File: {entry.file}</span>}
                       {entry.guild && (
                         <>
-                          {entry.level && <span>•</span>}
+                          {entry.file && <span>•</span>}
                           <span>{entry.guild}</span>
                         </>
                       )}
@@ -96,8 +105,12 @@ export function Leaderboard({ title, description, entries, scoreLabel }: Leaderb
                 </div>
 
                 <div className="text-right">
-                  <div className="text-2xl font-bold text-primary">{entry.score.toLocaleString()}</div>
-                  <div className="text-sm text-muted-foreground">{scoreLabel}</div>
+                  <div className="text-2xl font-bold text-primary">
+                    {entry.score.toLocaleString()}
+                  </div>
+                  <div className="text-sm text-muted-foreground">
+                    {scoreLabel}
+                  </div>
                 </div>
               </div>
             ))}
@@ -105,5 +118,5 @@ export function Leaderboard({ title, description, entries, scoreLabel }: Leaderb
         </CardContent>
       </Card>
     </div>
-  )
+  );
 }

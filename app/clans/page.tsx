@@ -1,8 +1,8 @@
 import { Leaderboard } from "@/components/leaderboard";
 import { opencloud_ordered_datastore_get } from "@/lib/datastore";
 
-export default async function FamePage() {
-  let entries = await opencloud_ordered_datastore_get("AOTopFame3");
+export default async function ClansPage() {
+  let entries = await opencloud_ordered_datastore_get("AOTopClans2");
   entries = entries.map(
     (
       entry: {
@@ -13,19 +13,19 @@ export default async function FamePage() {
     ) => {
       return {
         rank: index + 1,
-        name: entry.id.split("_")[0],
-        score: parseInt(entry.value),
-        file: entry.id.split("_")[1],
+        name: entry.id.split("_")[1],
+        score: Math.abs(parseInt(entry.value)),
+        // file: entry.id.split("_")[1],
         // guild: "test",
       };
     }
   );
   return (
     <Leaderboard
-      title="Top Fame Leaderboard"
-      description="The top users with Renown"
+      title="Top Clans Leaderboard"
+      description="The top clans"
       entries={entries}
-      scoreLabel="Renown"
+      scoreLabel="Infamy"
     />
   );
 }
