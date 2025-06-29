@@ -1,5 +1,6 @@
 import { Leaderboard } from "@/components/leaderboard";
 import { opencloud_ordered_datastore_get } from "@/lib/datastore";
+import { includeAvatarUrlInEntries } from "@/lib/roblox";
 
 export default async function BountyPage() {
   let entries = await opencloud_ordered_datastore_get("AOTopBounty3");
@@ -20,6 +21,7 @@ export default async function BountyPage() {
       };
     }
   );
+  entries = await includeAvatarUrlInEntries(entries);
   return (
     <Leaderboard
       title="Top Bounty Leaderboard"

@@ -1,5 +1,6 @@
 import { Leaderboard } from "@/components/leaderboard";
 import { opencloud_ordered_datastore_get } from "@/lib/datastore";
+import { includeAvatarUrlInEntries } from "@/lib/roblox";
 
 export default async function GrandNavyPage() {
   let entries = await opencloud_ordered_datastore_get("AOTopNavy3");
@@ -20,6 +21,8 @@ export default async function GrandNavyPage() {
       };
     }
   );
+
+  entries = await includeAvatarUrlInEntries(entries);
   return (
     <Leaderboard
       title="Grand Navy Leaderboard"

@@ -1,6 +1,6 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-// import { Avatar, AvatarFallback } from "@/components/ui/avatar";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Crown, Medal, Award } from "lucide-react";
 import Link from "next/link";
 
@@ -10,6 +10,7 @@ interface LeaderboardEntry {
   score: number;
   file?: number;
   guild?: string;
+  avatarUrl?: string;
 }
 
 interface LeaderboardProps {
@@ -86,8 +87,9 @@ export function Leaderboard({
                       #{entry.rank}
                     </Badge>
                   </div>
-
-                  {/* <Avatar>
+                  {/* <ClientAvatarImage userId={entry.name}></ClientAvatarImage> */}
+                  <Avatar>
+                    <AvatarImage src={`${entry.avatarUrl}`} />
                     <AvatarFallback className="bg-primary/10 text-primary font-semibold">
                       {entry.name
                         .split(" ")
@@ -95,8 +97,7 @@ export function Leaderboard({
                         .join("")
                         .toUpperCase()}
                     </AvatarFallback>
-                  </Avatar> */}
-
+                  </Avatar>
                   <div>
                     <div className="font-semibold text-lg">
                       {linkFunction ? (
