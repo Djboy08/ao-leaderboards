@@ -11,6 +11,7 @@ interface LeaderboardEntry {
   file?: number;
   guild?: string;
   avatarUrl?: string;
+  username?: string;
 }
 
 interface LeaderboardProps {
@@ -105,7 +106,7 @@ export function Leaderboard({
                           href={linkFunction(entry.name)}
                           className="text-blue-400 underline"
                         >
-                          {entry.name}
+                          {entry.username ? entry.username : entry.name}
                         </Link>
                       ) : (
                         entry.name
