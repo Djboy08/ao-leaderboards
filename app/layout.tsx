@@ -24,7 +24,9 @@ export default function RootLayout({
         <Navigation />
         <main>
           <div className="text-xs underline text-center font-semibold p-2">
-            updates every 1 hour
+            Updates every hour
+            <br />
+            Last Updated: {new Date().toString()}
           </div>
           {children}
         </main>
