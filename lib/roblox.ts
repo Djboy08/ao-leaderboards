@@ -30,7 +30,8 @@ export async function includeAvatarUrlInEntries(
         });
       }
       return usernames;
-    } finally {
+    } catch (e) {
+      console.warn(e);
       return {};
     }
   }
@@ -56,6 +57,7 @@ export async function includeAvatarUrlInEntries(
     if (avatarEntry && avatarEntry.state === "Completed") {
       avatarUrl = avatarEntry.imageUrl;
     }
+    console.log(usernames);
     return {
       ...entry,
       avatarUrl,
