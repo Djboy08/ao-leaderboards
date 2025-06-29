@@ -4,7 +4,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import { Navigation } from "@/components/navigation";
 // import { ThemeProvider } from "@/components/theme-provider"
-export const revalidate = 900;
+export const revalidate = 3600;
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
@@ -22,7 +22,12 @@ export default function RootLayout({
       <body className={`${inter.className} dark`}>
         {/* <ThemeProvider attribute="class" defaultTheme="dark" enableSystem disableTransitionOnChange> */}
         <Navigation />
-        <main>{children}</main>
+        <main>
+          <div className="text-xs underline text-center font-semibold p-2">
+            updates every 1 hour
+          </div>
+          {children}
+        </main>
         {/* </ThemeProvider> */}
       </body>
     </html>
