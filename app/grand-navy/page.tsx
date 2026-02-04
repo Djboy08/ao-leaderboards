@@ -23,7 +23,6 @@ export default async function GrandNavyPage() {
   );
 
   entries = await includeAvatarUrlInEntries(entries);
-  console.log(entries);
   return (
     <Leaderboard
       title="Grand Navy Leaderboard"
