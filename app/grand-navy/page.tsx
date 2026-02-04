@@ -3,7 +3,7 @@ import { opencloud_ordered_datastore_get } from "@/lib/datastore";
 import { includeAvatarUrlInEntries } from "@/lib/roblox";
 
 export default async function GrandNavyPage() {
-  let entries = await opencloud_ordered_datastore_get("AOTopNavy3");
+  let entries = await opencloud_ordered_datastore_get("AOTopNavy4");
   entries = entries.map(
     (
       entry: {
@@ -23,6 +23,7 @@ export default async function GrandNavyPage() {
   );
 
   entries = await includeAvatarUrlInEntries(entries);
+  console.log(entries);
   return (
     <Leaderboard
       title="Grand Navy Leaderboard"

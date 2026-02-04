@@ -3,7 +3,7 @@ import { opencloud_ordered_datastore_get } from "@/lib/datastore";
 import { includeAvatarUrlInEntries } from "@/lib/roblox";
 
 export default async function BountyPage() {
-  let entries = await opencloud_ordered_datastore_get("AOTopBounty3");
+  let entries = await opencloud_ordered_datastore_get("AOTopBounty4");
   entries = entries.map(
     (
       entry: {

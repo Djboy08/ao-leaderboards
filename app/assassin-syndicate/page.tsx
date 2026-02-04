@@ -3,7 +3,7 @@ import { opencloud_ordered_datastore_get } from "@/lib/datastore";
 import { includeAvatarUrlInEntries } from "@/lib/roblox";
 
 export default async function AssassinSyndicatePage() {
-  let entries = await opencloud_ordered_datastore_get("AOTopSynd3");
+  let entries = await opencloud_ordered_datastore_get("AOTopSynd4");
   entries = entries.map(
     (
       entry: {

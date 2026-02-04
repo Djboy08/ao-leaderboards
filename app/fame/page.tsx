@@ -7,7 +7,7 @@ type entry = {
   value: string;
 };
 export default async function FamePage() {
-  let entries = await opencloud_ordered_datastore_get("AOTopFame3");
+  let entries = await opencloud_ordered_datastore_get("AOTopFame4");
   entries = entries.map((entry: entry, index: number) => {
     return {
       rank: index + 1,
