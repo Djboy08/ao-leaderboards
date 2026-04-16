@@ -33,11 +33,11 @@ const navigationItems = [
     href: "/clans",
     icon: Sword,
   },
-  // {
-  //   name: "Guilds",
-  //   href: "/guilds",
-  //   icon: Sword,
-  // },
+  {
+    name: "Guilds",
+    href: "/guilds",
+    icon: Sword,
+  },
 ];
 
 function ThemeToggle() {
@@ -81,7 +81,7 @@ export function Navigation() {
                     "flex items-center space-x-2 px-3 py-2 rounded-md text-sm font-medium transition-colors",
                     pathname === item.href
                       ? "bg-primary text-primary-foreground"
-                      : "text-muted-foreground hover:text-foreground hover:bg-muted"
+                      : "text-muted-foreground hover:text-foreground hover:bg-muted",
                   )}
                 >
                   <Icon className="h-4 w-4" />

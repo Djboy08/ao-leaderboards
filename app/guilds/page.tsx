@@ -2,12 +2,12 @@ import { Leaderboard } from "@/components/leaderboard";
 import { opencloud_ordered_datastore_get } from "@/lib/datastore";
 
 export default async function ClansPage() {
-  let entries = await opencloud_ordered_datastore_get("AOTopClans2");
+  let entries = await opencloud_ordered_datastore_get("AOTopGuilds");
   console.log(entries);
   // Check if there are three underscores present, if so use everything after the third one.
-  entries = entries.filter((entry: { id: string; value: string }) => {
-    return entry.id.split("_").length == 2;
-  });
+  // entries = entries.filter((entry: { id: string; value: string }) => {
+  //   return entry.id.split("_").length >= 3;
+  // });
   entries = entries.map(
     (
       entry: {
@@ -27,11 +27,11 @@ export default async function ClansPage() {
   );
   return (
     <Leaderboard
-      title="Top Clans Leaderboard"
-      description="The top clans"
+      title="Top Guilds Leaderboard"
+      description="The top guilds"
       entries={entries}
-      scoreLabel="Infamy"
-      topLabel="Top Clans"
+      scoreLabel="Reputation"
+      topLabel="Top Guilds"
     />
   );
 }
