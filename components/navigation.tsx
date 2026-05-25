@@ -38,6 +38,11 @@ const navigationItems = [
     href: "/guilds",
     icon: Sword,
   },
+  {
+    name: "Ranked",
+    href: "/ranked",
+    icon: Sword,
+  },
 ];
 
 function ThemeToggle() {
